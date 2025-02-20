@@ -7,7 +7,11 @@ const initialGameBoard = [
 ];
 
 export default function GameBoard() {
-  const [] = useState();
+  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+
+  function hamdleSelectSquare(rowIndex, colIndex) {
+    setGameBoard((prevGameBoard) => {});
+  }
   return (
     <ol id="game-board">
       {initialGameBoard.map((row, rowIndex) => (
@@ -15,7 +19,7 @@ export default function GameBoard() {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button>{playerSymbol}</button>
+                <button onClick={hamdleSelectSquare}>{playerSymbol}</button>
               </li>
             ))}
           </ol>
