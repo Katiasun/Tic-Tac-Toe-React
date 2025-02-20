@@ -7,9 +7,11 @@ export default function Player({ name, symbol }) {
   }
 
   const playerName = <span className="player-name">{name}</span>;
+  // const btnCaption = "Edit";
 
   if (isEditing) {
     playerName = <input type="text" required />;
+    // btnCaption = "Save";
   }
   return (
     <li>
@@ -17,7 +19,7 @@ export default function Player({ name, symbol }) {
         {playerName}
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handleEditClick}>Edit</button>
+      <button onClick={handleEditClick}>{btnCaption ? "Save" : "Edit"}</button>
     </li>
   );
 }
