@@ -11,13 +11,13 @@ export default function Player({ initalName, symbol }) {
   // const btnCaption = "Edit";
 
   if (isEditing) {
-    playerName = <input type="text" required value={playerName} />;
+    editablePlayerName = <input type="text" required value={playerName} />;
     // btnCaption = "Save";
   }
   return (
     <li>
       <span className="player">
-        {playerName}
+        {editablePlayerName}
         <span className="player-symbol">{symbol}</span>
       </span>
       <button onClick={handleEditClick}>{isEditing ? "Save" : "Edit"}</button>
