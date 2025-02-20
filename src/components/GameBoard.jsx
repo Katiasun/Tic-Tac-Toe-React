@@ -6,15 +6,17 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-  function hamdleSelectSquare(rowIndex, colIndex) {
+  function handleSelectSquare(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
       const updateBoard = [...prevGameBoard.map((innerArray) => [...innerArray])];
-      updateBoard[rowIndex][colIndex] = "X";
+      updateBoard[rowIndex][colIndex] = activePlayerSymbol;
       return updateBoard;
     });
+
+    onSelectSquare();
   }
   return (
     <ol id="game-board">
@@ -23,7 +25,7 @@ export default function GameBoard() {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => hamdleSelectSquare(rowIndex, colIndex)}>
+                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </li>
