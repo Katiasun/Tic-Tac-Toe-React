@@ -10,9 +10,9 @@ export default function GameBoard() {
       {initialGameBoard.map((row, rowIndex) => {
         <li key={rowIndex}>
           <ol>
-            {row.map((col, colIndex) => {
+            {row.map((playerSymbol, colIndex) => {
               <li key={colIndex}>
-                <button>{col}</button>
+                <button>{playerSymbol}</button>
               </li>;
             })}
           </ol>
