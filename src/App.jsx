@@ -5,7 +5,12 @@ import Log from "./components/Log";
 import GameOver from "./components/GameOver";
 import { WINNING_COMBINATIONS } from "./winning-combinations";
 
-const initialGameBoard = [
+const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
+
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -42,7 +47,7 @@ function deriveWinner(gameBoard, players) {
 }
 
 function deriveGameBoard(gameTurns) {
-  let gameBoard = [...initialGameBoard.map((array) => [...array])];
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
 
   for (const turn of gameTurns) {
     const { square, player } = turn;
@@ -55,7 +60,7 @@ function deriveGameBoard(gameTurns) {
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" });
+  const [players, setPlayers] = useState(PLAYERS);
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
@@ -94,13 +99,13 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initalName="Player 1"
+            initalName={PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             onChangeName={handlePlayerNameChange}
           />
           <Player
-            initalName="Player 2"
+            initalName={PLAYERS.O}
             symbol="O"
             isActive={activePlayer === "O"}
             onChangeName={handlePlayerNameChange}
